@@ -8,7 +8,9 @@ const Candidates = ({ candidates }) => {
             {candidates.map(candidate =>
                 <Candidate
                     name={candidate.name}
-                    email={candidate.email} />)}
+                    email={candidate.email}
+                    key={candidate.id}
+                />)}
         </Row>
     )
 }
