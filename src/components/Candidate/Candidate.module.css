@@ -1,0 +1,10 @@
+.margin{
+    margin-top: 0;
+}
+.cardBack{
+    background-color: #A50104;
+    color: white;
+}
+.cardBack:hover{
+    color: #FCBA04
+}
