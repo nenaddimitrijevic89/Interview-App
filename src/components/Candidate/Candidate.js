@@ -7,8 +7,9 @@ const Candidate = ({ name, email }) => {
     return (
 
         <Col
-            m={4}
-            s={4}
+            l={4}
+            m={6}
+            s={12}
         >
             <Card
                 className={style.cardBack}
