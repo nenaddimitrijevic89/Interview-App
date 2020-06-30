@@ -7,7 +7,7 @@ const Header = () => {
         <Navbar
             alignLinks="right"
             className={style.back}
-            brand={<a className="brand-logo" href="#">Logo</a>}
+            brand={<a className="brand-logo" href="#">Interview App</a>}
             centerChildren
             id="mobile-nav"
             menuIcon={<Icon>menu</Icon>}
