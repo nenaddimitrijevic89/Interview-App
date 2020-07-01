@@ -1,0 +1,11 @@
+.name{
+    text-align: center;
+    margin-top: 0px;
+}
+.info{
+    background-color: #b4743b;
+    color: white;
+}
+.info:hover{
+    background-color: #773e13;
+}

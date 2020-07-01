@@ -1,9 +1,10 @@
 import React from 'react';
 import { Col, Card, Icon, CardTitle } from 'react-materialize';
-import avatar from '../../images/avatar.jpg';
+import avatar from '../../../images/avatar.jpg';
 import style from './Candidate.module.css';
+import { Link } from 'react-router-dom';
 
-const Candidate = ({ name, email }) => {
+const Candidate = ({ name, email, id }) => {
     return (
 
         <Col
@@ -11,7 +12,7 @@ const Candidate = ({ name, email }) => {
             m={6}
             s={12}
         >
-            <Card
+            <Link to={`/info/${id}`}><Card
                 className={style.cardBack}
                 closeIcon={<Icon>close</Icon>}
                 header={<CardTitle image={avatar}></CardTitle>}
@@ -19,7 +20,7 @@ const Candidate = ({ name, email }) => {
             >
                 <h4 className={style.margin}>{name}</h4>
                 <h6><i className="fa fa-envelope"></i> {email}</h6>
-            </Card>
+            </Card></Link>
         </Col>
 
     )
