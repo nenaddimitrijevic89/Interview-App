@@ -10,6 +10,7 @@ const Candidates = ({ candidates }) => {
                     name={candidate.name}
                     email={candidate.email}
                     key={candidate.id}
+                    id={candidate.id}
                 />)}
         </Row>
     )
