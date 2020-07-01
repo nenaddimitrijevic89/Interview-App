@@ -3,9 +3,9 @@
     margin-top: 0px;
 }
 .info{
-    background-color: #b4743b;
+    background-color: #b4743b !important;
     color: white;
 }
 .info:hover{
-    background-color: #773e13;
+    background-color: #773e13 !important;
 }

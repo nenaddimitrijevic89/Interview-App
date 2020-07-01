@@ -4,6 +4,7 @@ import { CandidateInfoCard } from './CandidateInfoCard';
 import { Container } from 'react-materialize';
 import { Header } from '../../../components/Header/Header';
 import { serviceReports } from '../../../services/fetchReports';
+import { CandidateReports } from '../CandidateReports/CandidateReports';
 
 class CandidateInfo extends React.Component {
     constructor(props) {
@@ -30,6 +31,7 @@ class CandidateInfo extends React.Component {
                 <Header />
                 <Container>
                     <CandidateInfoCard candidate={this.state.candidate} />
+                    <CandidateReports reports={this.state.reports} candidateId={this.props.match.params.id} />
                 </Container>
             </>
         )
