@@ -2,9 +2,10 @@
     margin-top: 0;
 }
 .cardBack{
-    background-color: #b4743b;
+    background-color: #8C1C13;
     color: white;
 }
 .cardBack:hover{
-    background-color:#773e13;
+    background-color: #E7D7C1;
+    color: black;
 }

@@ -28,7 +28,6 @@ const Search = ({ search }) => {
             search
             onChange={searching}
         >
-
         </Navbar>
     )
 }

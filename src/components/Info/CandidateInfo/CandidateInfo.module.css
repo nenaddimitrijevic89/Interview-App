@@ -3,9 +3,11 @@
     margin-top: 0px;
 }
 .info{
-    background-color: #b4743b;
+
+    background-color: #8C1C13;
     color: white;
 }
 .info:hover{
-    background-color: #773e13;
+    background-color: #E7D7C1;
+    color: black;
 }
