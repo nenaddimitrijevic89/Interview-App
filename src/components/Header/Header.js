@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navbar, Icon, NavItem } from 'react-materialize';
 import style from './Header.module.css';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
@@ -23,10 +24,10 @@ const Header = () => {
                 preventScrolling: true
             }}
         >
-            <NavItem href="">
+            <Link to="/admin"><NavItem>
                 Login
-  </NavItem>
-            <NavItem href="components.html">
+  </NavItem></Link>
+            <NavItem>
                 Reports
   </NavItem>
         </Navbar>
