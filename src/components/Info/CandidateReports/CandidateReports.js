@@ -1,49 +1,52 @@
 import React from 'react';
-import { Table } from 'react-materialize';
+import { Table, Card } from 'react-materialize';
 import { convertDate } from '../../../shared/utilities';
+import style from './CandidateReports.module.css';
 
 const CandidateReports = ({ reports, candidateId }) => {
     let reportsList = reports.filter(report => report.candidateId === Number(candidateId))
     console.log(reportsList)
     return (
-        <Table>
-            <thead>
-                <tr>
-                    <th>
-                        Company
-                    </th>
-                    <th>
-                        Interview date
-                    </th>
-                    <th>
-                        Status
-                    </th>
-                    <th>
-                        Info
-                    </th>
-                    <th>
-                        Delete
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                {reportsList.map(report =>
+        <Card className={style.back}>
+            <Table>
+                <thead>
                     <tr>
-                        <td>
-                            {report.companyName}
-                        </td>
-                        <td>
-                            {convertDate(report.interviewDate)}
-                        </td>
-                        <td>
-                            {report.status}
-                        </td>
-                        <td><i class="fa fa-eye"></i></td>
-                        <td><i class="fa fa-close"></i></td>
+                        <th>
+                            Company
+                    </th>
+                        <th>
+                            Interview date
+                    </th>
+                        <th>
+                            Status
+                    </th>
+                        <th>
+                            Info
+                    </th>
+                        <th>
+                            Delete
+                    </th>
                     </tr>
-                )}
-            </tbody>
-        </Table>
+                </thead>
+                <tbody>
+                    {reportsList.map(report =>
+                        <tr>
+                            <td>
+                                {report.companyName}
+                            </td>
+                            <td>
+                                {convertDate(report.interviewDate)}
+                            </td>
+                            <td>
+                                {report.status}
+                            </td>
+                            <td><i class="fa fa-eye"></i></td>
+                            <td><i class="fa fa-close"></i></td>
+                        </tr>
+                    )}
+                </tbody>
+            </Table>
+        </Card>
     )
 }
 
