@@ -28,7 +28,7 @@ class CandidateInfo extends React.Component {
     render() {
         return (
             <>
-                <Header />
+                <Header isHomePage={true} />
                 <Container>
                     <CandidateInfoCard candidate={this.state.candidate} />
                     <CandidateReports reports={this.state.reports} candidateId={this.props.match.params.id} />

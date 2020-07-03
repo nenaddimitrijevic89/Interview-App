@@ -1,17 +1,17 @@
 import React from 'react';
-import { Table, Card } from 'react-materialize';
+import style from './Report.module.css';
+import { Card, Table } from 'react-materialize';
 import { convertDate } from '../../../shared/utilities';
-import style from './CandidateReports.module.css';
 
-const CandidateReports = ({ reports, candidateId }) => {
-    let reportsList = reports.filter(report => report.candidateId === Number(candidateId))
-    console.log(reportsList)
+const Report = ({ reports }) => {
+
     return (
         <Card className={style.back}>
             <Table>
                 <thead>
                     <tr>
                         <th>Company</th>
+                        <th>Name</th>
                         <th>Interview date</th>
                         <th>Status</th>
                         <th>Info</th>
@@ -19,10 +19,13 @@ const CandidateReports = ({ reports, candidateId }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {reportsList.map(report =>
+                    {reports.map(report =>
                         <tr>
                             <td>
                                 {report.companyName}
+                            </td>
+                            <td>
+                                {report.name}
                             </td>
                             <td>
                                 {convertDate(report.interviewDate)}
@@ -40,4 +43,4 @@ const CandidateReports = ({ reports, candidateId }) => {
     )
 }
 
-export { CandidateReports };
+export { Report };

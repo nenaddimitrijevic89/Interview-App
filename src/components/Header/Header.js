@@ -3,12 +3,12 @@ import { Navbar, Icon, NavItem } from 'react-materialize';
 import style from './Header.module.css';
 import { Link } from 'react-router-dom';
 
-const Header = () => {
+const Header = ({ isHomePage }) => {
     return (
         <Navbar
             alignLinks="right"
             className={style.back}
-            brand={<a className="brand-logo" href="#">Interview App</a>}
+            brand={isHomePage ? <a className="brand-logo" href="#">Interview App</a> : <a className="brand-logo" href="#">Interview Reports</a>}
             centerChildren
             id="mobile-nav"
             menuIcon={<Icon>menu</Icon>}
@@ -23,13 +23,10 @@ const Header = () => {
                 outDuration: 200,
                 preventScrolling: true
             }}
-        >
-            <Link to="/admin"><NavItem>
-                Login
-  </NavItem></Link>
-            <NavItem>
-                Reports
-  </NavItem>
+        >{isHomePage ? <div className={style.nav}><Link to="/admin"><NavItem>Login</NavItem></Link>
+            <Link to="admin/reports"><NavItem>Reports</NavItem></Link></div>
+            : <div className={style.nav}><Link to="/admin"><NavItem>Create Report</NavItem></Link>
+                <Link to="admin/reports"><NavItem>Logout</NavItem></Link></div>}
         </Navbar>
     )
 }

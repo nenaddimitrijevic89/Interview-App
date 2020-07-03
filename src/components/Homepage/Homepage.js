@@ -29,7 +29,7 @@ class Homepage extends React.Component {
     render() {
         return (
             <>
-                <Header />
+                <Header isHomePage={true} />
                 <Container>
                     <Search search={this.searchCandidates} />
                     <Candidates candidates={this.state.filteredCandidatesList} />
