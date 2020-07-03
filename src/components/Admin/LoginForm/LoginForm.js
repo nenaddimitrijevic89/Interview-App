@@ -2,6 +2,7 @@ import React from 'react';
 import { TextInput, Container, Button } from 'react-materialize';
 import style from './LoginForm.module.css';
 import { adminService } from '../../../services/adminService';
+import { storageService } from '../../../services/StorageService';
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -17,8 +18,9 @@ class LoginForm extends React.Component {
     }
 
     submitData = () => {
-        adminService.post(this.state)
-            .then(response => console.log(response))
+        adminService(this.state)
+            .then(response => storageService.set("accessToken", response.data.accessToken))
+        this.props.history.push('/admin/reports')
     }
 
     render() {
@@ -27,7 +29,6 @@ class LoginForm extends React.Component {
                 <div className={style.login}>
                     <i className={`fa fa-user ${style.user}`}></i>
                     <TextInput
-                        className={style.text}
                         email
                         id="TextInput-4"
                         label="Email"
@@ -36,7 +37,6 @@ class LoginForm extends React.Component {
                         onChange={this.logIn}
                     />
                     <TextInput
-                        className={style.text}
                         id="TextInput-3"
                         label="Password"
                         name='password'
