@@ -1,6 +1,6 @@
 import React from 'react';
 import { serviceCandidate } from '../../../services/fetchCandidates';
-import { CandidateInfoCard } from './CandidateInfoCard';
+import { CandidateInfoCard } from '../CandidateInfoCard/CandidateInfoCard';
 import { Container } from 'react-materialize';
 import { Header } from '../../../components/Header/Header';
 import { serviceReports } from '../../../services/fetchReports';
@@ -11,7 +11,8 @@ class CandidateInfo extends React.Component {
         super(props);
         this.state = {
             candidate: [],
-            reports: []
+            reports: [],
+            modalIsOpen: false
         }
     }
     componentDidMount() {
@@ -24,6 +25,9 @@ class CandidateInfo extends React.Component {
         serviceReports.getReports()
             .then(response => this.setState({ reports: response }))
     }
+    openModal = () => {
+        this.setState(prevState => ({ modalIsOpen: !prevState.modalIsOpen }))
+    }
 
     render() {
         return (
@@ -31,7 +35,12 @@ class CandidateInfo extends React.Component {
                 <Header isHomePage={true} />
                 <Container>
                     <CandidateInfoCard candidate={this.state.candidate} />
-                    <CandidateReports reports={this.state.reports} candidateId={this.props.match.params.id} />
+                    <CandidateReports
+                        reports={this.state.reports}
+                        candidateId={this.props.match.params.id}
+                        modalIsOpen={this.state.modalIsOpen}
+                        openModal={this.openModal}
+                    />
                 </Container>
             </>
         )

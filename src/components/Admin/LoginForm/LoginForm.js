@@ -9,7 +9,8 @@ class LoginForm extends React.Component {
         super(props);
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            wrongUser: false
         }
     }
 
@@ -19,8 +20,14 @@ class LoginForm extends React.Component {
 
     submitData = () => {
         adminService(this.state)
-            .then(response => storageService.set("accessToken", response.data.accessToken))
-        this.props.history.push('/admin/reports')
+            .then(response => {
+                storageService.set("accessToken", response.data.accessToken)
+                this.props.history.push('/admin/reports')
+            })
+            .catch(error => {
+                console.log(error)
+                this.setState({ wrongUser: true })
+            })
     }
 
     render() {
@@ -28,6 +35,9 @@ class LoginForm extends React.Component {
             <Container>
                 <div className={style.login}>
                     <i className={`fa fa-user ${style.user}`}></i>
+                    <span className={style.wrongUser}>
+                        {this.state.wrongUser ? " wrong email or password" : ""}
+                    </span>
                     <TextInput
                         email
                         id="TextInput-4"

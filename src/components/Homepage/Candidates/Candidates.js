@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row } from 'react-materialize';
-import { Candidate } from './Candidate';
+import { Candidate } from '../Candidate/Candidate';
 
 const Candidates = ({ candidates }) => {
     return (

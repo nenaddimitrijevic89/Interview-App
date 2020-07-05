@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Col, Card, CardTitle } from 'react-materialize';
 import avatar from '../../../images/avatar.jpg';
 import { convertDate } from '../../../shared/utilities';
-import style from './CandidateInfo.module.css';
+import style from './CandidateInfoCard.module.css';
 
 const CandidateInfoCard = ({ candidate }) => {
     const { name, email, birthday, education } = candidate;
