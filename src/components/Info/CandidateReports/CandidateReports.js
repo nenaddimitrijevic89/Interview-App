@@ -2,8 +2,9 @@ import React from 'react';
 import { Table, Card } from 'react-materialize';
 import { convertDate } from '../../../shared/utilities';
 import style from './CandidateReports.module.css';
+import { ModalReport } from '../../../shared/ModalReport';
 
-const CandidateReports = ({ reports, candidateId }) => {
+const CandidateReports = ({ reports, candidateId, modalIsOpen, openModal }) => {
     let reportsList = reports.filter(report => report.candidateId === Number(candidateId))
     console.log(reportsList)
     return (
@@ -19,8 +20,8 @@ const CandidateReports = ({ reports, candidateId }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {reportsList.map(report =>
-                        <tr>
+                    {reportsList.map((report, i) =>
+                        <tr key={i}>
                             <td>
                                 {report.companyName}
                             </td>
@@ -30,8 +31,12 @@ const CandidateReports = ({ reports, candidateId }) => {
                             <td>
                                 {report.status}
                             </td>
-                            <td><i class="fa fa-eye"></i></td>
+                            <td><i class="fa fa-eye" onClick={() => openModal()}></i></td>
                             <td><i class="fa fa-close"></i></td>
+                            <ModalReport
+                                report={report}
+                                modalIsOpen={modalIsOpen}
+                                openModal={openModal} />
                         </tr>
                     )}
                 </tbody>

@@ -2,8 +2,9 @@ import React from 'react';
 import style from './Report.module.css';
 import { Card, Table } from 'react-materialize';
 import { convertDate } from '../../../shared/utilities';
+import { ModalReport } from '../../../shared/ModalReport';
 
-const Report = ({ reports }) => {
+const Report = ({ reports, modalIsOpen, openModal }) => {
 
     return (
         <Card className={style.back}>
@@ -20,7 +21,7 @@ const Report = ({ reports }) => {
                 </thead>
                 <tbody>
                     {reports.map(report =>
-                        <tr>
+                        <tr key={report.id}>
                             <td>
                                 {report.companyName}
                             </td>
@@ -33,8 +34,12 @@ const Report = ({ reports }) => {
                             <td>
                                 {report.status}
                             </td>
-                            <td><i class="fa fa-eye"></i></td>
+                            <td><i class="fa fa-eye" onClick={() => openModal()}></i></td>
                             <td><i class="fa fa-close"></i></td>
+                            <ModalReport
+                                report={report}
+                                modalIsOpen={modalIsOpen}
+                                openModal={openModal} />
                         </tr>
                     )}
                 </tbody>

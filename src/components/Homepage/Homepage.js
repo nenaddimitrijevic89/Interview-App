@@ -1,6 +1,6 @@
 import React from 'react';
 import { serviceCandidate } from '../../services/fetchCandidates';
-import { Candidates } from './Candidate/Candidates';
+import { Candidates } from './Candidates/Candidates';
 import { Container } from 'react-materialize';
 import { Search } from '../Search/Search';
 import { Header } from '../Header/Header';
