@@ -4,21 +4,29 @@ import { Header } from "../../Header/Header";
 import { Container } from "react-materialize";
 import { Report } from "../Report/Report";
 import { Authentication } from "../../../services/AuthenticationService";
+import { search } from "../../../shared/utilities";
+import { Search } from "../../Search/Search";
 
 class Reports extends React.Component {
     constructor() {
         super();
         this.state = {
             reports: [],
+            filteredReports: [],
             modalIsOpen: false
         }
     }
     componentDidMount() {
         serviceReports.getReports()
-            .then(response => this.setState({ reports: response }))
+            .then(response => this.setState({ reports: response, filteredReports: response }))
     }
     openModal = () => {
         this.setState(prevState => ({ modalIsOpen: !prevState.modalIsOpen }))
+    }
+
+    searchReports = (text) => {
+        const filtered = search(this.state.reports, ['name', 'companyName'], text);
+        this.setState({ filteredReports: filtered })
     }
 
     render() {
@@ -30,8 +38,9 @@ class Reports extends React.Component {
             <>
                 <Header isHomePage={false} />
                 <Container>
+                    <Search search={this.searchReports} />
                     <Report
-                        reports={this.state.reports}
+                        reports={this.state.filteredReports}
                         modalIsOpen={this.state.modalIsOpen}
                         openModal={this.openModal} />
                 </Container>
