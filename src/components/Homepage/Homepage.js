@@ -4,6 +4,7 @@ import { Candidates } from './Candidates/Candidates';
 import { Container } from 'react-materialize';
 import { Search } from '../Search/Search';
 import { Header } from '../Header/Header';
+import { search } from '../../shared/utilities';
 
 class Homepage extends React.Component {
     constructor(props) {
@@ -20,9 +21,8 @@ class Homepage extends React.Component {
     }
 
     searchCandidates = (text) => {
-        const filtered = this.state.candidatesList.filter(candidate => {
-            return candidate.name.toLowerCase().includes(text.toLowerCase())
-        })
+
+        const filtered = search(this.state.candidatesList, ['name'], text);
         this.setState({ filteredCandidatesList: filtered })
     }
 
