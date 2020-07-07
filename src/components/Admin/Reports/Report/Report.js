@@ -1,8 +1,8 @@
 import React from 'react';
 import style from './Report.module.css';
 import { Card, Table } from 'react-materialize';
-import { convertDate } from '../../../shared/utilities';
-import { ModalReport } from '../../../shared/ModalReport/ModalReport';
+import { convertDate } from '../../../../shared/utilities';
+import { ModalReport } from '../../../../shared/ModalReport/ModalReport';
 
 const Report = ({ reports, modalIsOpen, openModal, report }) => {
 
