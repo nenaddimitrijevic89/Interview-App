@@ -1,5 +1,4 @@
 import React from 'react';
-import { Navbar, Icon } from 'react-materialize';
 import style from './Search.module.css';
 
 const Search = ({ search }) => {
@@ -8,27 +7,16 @@ const Search = ({ search }) => {
         search(text)
     }
     return (
-        <Navbar
-            className={style.back}
-            alignLinks="right"
-            brand={<a className="brand-logo" href="#">Logo</a>}
-            id="mobile-nav"
-            menuIcon={<Icon>menu</Icon>}
-            options={{
-                draggable: true,
-                edge: 'left',
-                inDuration: 250,
-                onCloseEnd: null,
-                onCloseStart: null,
-                onOpenEnd: null,
-                onOpenStart: null,
-                outDuration: 200,
-                preventScrolling: true
-            }}
-            search
-            onChange={searching}
-        >
-        </Navbar>
+        <nav className={style.back}>
+            <div className='nav-wrapper'>
+                <form>
+                    <div className="input-field">
+                        <input id="search" type="search" required onChange={searching}></input>
+                        <label className="label-icon" htmlFor="search"><i className={`fa fa-search ${style.icon}`}></i></label>
+                    </div>
+                </form>
+            </div>
+        </nav>
     )
 }
 

@@ -2,12 +2,8 @@
     text-align: center;
     margin-top: 0px;
 }
-.info{
 
-    background-color: #8C1C13;
-    color: white;
-}
-.info:hover{
+.info{
     background-color: #E7D7C1;
     color: black;
 }

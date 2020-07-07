@@ -13,15 +13,16 @@ class Reports extends React.Component {
         this.state = {
             reports: [],
             filteredReports: [],
-            modalIsOpen: false
+            modalIsOpen: false,
+            report: {}
         }
     }
     componentDidMount() {
         serviceReports.getReports()
             .then(response => this.setState({ reports: response, filteredReports: response }))
     }
-    openModal = () => {
-        this.setState(prevState => ({ modalIsOpen: !prevState.modalIsOpen }))
+    openModal = (report = {}) => {
+        this.setState(prevState => ({ modalIsOpen: !prevState.modalIsOpen, report }))
     }
 
     searchReports = (text) => {
@@ -42,7 +43,9 @@ class Reports extends React.Component {
                     <Report
                         reports={this.state.filteredReports}
                         modalIsOpen={this.state.modalIsOpen}
-                        openModal={this.openModal} />
+                        openModal={this.openModal}
+                        report={this.state.report}
+                    />
                 </Container>
             </>
         )

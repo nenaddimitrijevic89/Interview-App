@@ -12,7 +12,8 @@ class CandidateInfo extends React.Component {
         this.state = {
             candidate: [],
             reports: [],
-            modalIsOpen: false
+            modalIsOpen: false,
+            report: {}
         }
     }
     componentDidMount() {
@@ -25,8 +26,8 @@ class CandidateInfo extends React.Component {
         serviceReports.getReports()
             .then(response => this.setState({ reports: response }))
     }
-    openModal = () => {
-        this.setState(prevState => ({ modalIsOpen: !prevState.modalIsOpen }))
+    openModal = (report = {}) => {
+        this.setState(prevState => ({ modalIsOpen: !prevState.modalIsOpen, report }))
     }
 
     render() {
@@ -40,6 +41,7 @@ class CandidateInfo extends React.Component {
                         candidateId={this.props.match.params.id}
                         modalIsOpen={this.state.modalIsOpen}
                         openModal={this.openModal}
+                        report={this.state.report}
                     />
                 </Container>
             </>
