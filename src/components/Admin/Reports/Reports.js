@@ -2,7 +2,7 @@ import React from "react";
 import { serviceReports } from "../../../services/fetchReports";
 import { Header } from "../../Header/Header";
 import { Container } from "react-materialize";
-import { Report } from "../Report/Report";
+import { Report } from "./Report/Report";
 import { Authentication } from "../../../services/AuthenticationService";
 import { search } from "../../../shared/utilities";
 import { Search } from "../../Search/Search";
