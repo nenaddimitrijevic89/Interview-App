@@ -34,7 +34,7 @@ const Header = ({ isHomePage }) => {
             }}
         >{isHomePage ? <div className={style.nav}><Link to="/admin"><NavItem>Login</NavItem></Link>
             <Link to="/admin/reports"><NavItem>Reports</NavItem></Link></div>
-            : <div className={style.nav}><Link to="/admin"><NavItem>Create Report</NavItem></Link>
+            : <div className={style.nav}><Link to="/admin/createreport"><NavItem>Create Report</NavItem></Link>
                 <Link to="/admin/reports"><NavItem onClick={logOut}>Logout</NavItem></Link></div>}
         </Navbar>
     )
