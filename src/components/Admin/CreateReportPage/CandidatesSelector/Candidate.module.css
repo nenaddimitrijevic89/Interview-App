@@ -1,7 +1,10 @@
-.position{
-    display: flex;
+.card{
+    background-color: #E7D7C1;
+    border-bottom: 1px solid gray;
+    border-left: 1px solid gray;
 }
 
-.image{
-    width: 30%;
+.candidateWrapper{
+    margin-left: 0px !important;
+    margin-right: 0px !important;
 }
