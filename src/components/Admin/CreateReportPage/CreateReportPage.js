@@ -2,7 +2,7 @@ import React from 'react';
 import { serviceCandidate } from '../../../services/fetchCandidates';
 import { Header } from '../../Header/Header';
 import { serviceCompanies } from '../../../services/fetchCompanies';
-import { Container, Col, Row } from 'react-materialize';
+import { Container, Col, Row, Button } from 'react-materialize';
 import { CandidatesSelector } from './CandidatesSelector/CandidatesSelector';
 import { Search } from '../../Search/Search';
 import style from './CreateReportPage.module.css';
@@ -15,7 +15,8 @@ class CreateReportPage extends React.Component {
         this.state = {
             candidates: [],
             filteredCandidates: [],
-            companies: []
+            companies: [],
+            wizardStep: 1
         }
     }
 
@@ -31,6 +32,9 @@ class CreateReportPage extends React.Component {
         let filtered = search(this.state.candidates, ['name'], text)
         this.setState({ filteredCandidates: filtered })
     }
+    nextStep = () => {
+        this.setState({ wizardStep: this.state.wizardStep + 1 })
+    }
 
     render() {
         return (
@@ -44,6 +48,7 @@ class CreateReportPage extends React.Component {
                         <Col l={9} className={style.selectorWrapper}>
                             <Search search={this.searchData} />
                             <CandidatesSelector candidates={this.state.filteredCandidates} />
+                            <Button onClick={this.nextStep}>Next</Button>
                         </Col>
                     </Row>
                 </Container>

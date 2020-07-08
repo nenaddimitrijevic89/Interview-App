@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row } from 'react-materialize';
 
-const NavList = () => {
+const NavList = ({ wizardStep }) => {
     return (
         <>
             <Row><h3>Candidate</h3></Row>
