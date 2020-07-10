@@ -1,3 +1,11 @@
 .selectorWrapper{
     padding: 0px !important;
 }
+
+.btnColor{
+    background-color: #8C1C13;
+    font-family:'Saira Condensed', sans-serif ;
+}
+.btnColor:hover{
+    background-color: #BF4342;
+}
