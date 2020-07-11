@@ -20,7 +20,7 @@ const Header = ({ isHomePage }) => {
             brand={isHomePage ? <a className="brand-logo">Interview App</a> : <a className="brand-logo">Interview Reports</a>}
             centerChildren
             id="mobile-nav"
-            menuIcon={<Icon>menu</Icon>}
+            menuIcon={<><div className={style.menu}></div><div className={style.menu}></div><div className={style.menu}></div></>}
             options={{
                 draggable: true,
                 edge: 'left',

@@ -2,6 +2,13 @@
     padding: 0px !important;
 }
 
+.reportDetailWrapper{
+    margin-top: 15px;
+    padding: 20px !important;
+    width: 100%;
+    background-color: white;
+}
+
 .btnColor{
     background-color: #8C1C13;
     font-family:'Saira Condensed', sans-serif ;
@@ -9,3 +16,12 @@
 .btnColor:hover{
     background-color: #BF4342;
 }
+.btnColor:visited{
+    background-color: #BF4342;
+}
+
+.alignEnd{
+    width: 100%;
+    text-align: end;
+}
+
