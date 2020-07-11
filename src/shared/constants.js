@@ -17,4 +17,8 @@ const customStyles = {
     }
 };
 
-export { customStyles };
+const phase = ['cv', 'hr', 'tech', 'final']
+
+const status = ['passed', 'declined']
+
+export { customStyles, phase, status };

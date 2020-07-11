@@ -9,6 +9,7 @@ import style from './CreateReportPage.module.css';
 import { search } from '../../../shared/utilities';
 import { NavList } from './NavList/NavList';
 import { CompaniesSelector } from './CompaniesSelector/CompaniesSelector';
+import { ReportDetailsSelector } from './ReportDetailsSelector/ReportDetailsSelector';
 
 class CreateReportPage extends React.Component {
     constructor(props) {
@@ -59,6 +60,30 @@ class CreateReportPage extends React.Component {
         this.setState({ newReportData: report })
     }
 
+    setInterviewDate = (date) => {
+        let report = { ...this.state.newReportData }
+        report.interviewDate = date;
+        this.setState({ newReportData: report })
+    }
+
+    setPhase = (phase) => {
+        let report = { ...this.state.newReportData };
+        report.phase = phase;
+        this.setState({ newReportData: report })
+    }
+
+    setStatus = (status) => {
+        let report = { ...this.state.newReportData };
+        report.status = status;
+        this.setState({ newReportData: report })
+    }
+
+    setNote = (note) => {
+        let report = { ...this.state.newReportData };
+        report.note = note;
+        this.setState({ newReportData: report })
+    }
+
     nextStep = () => {
         let currentStep = this.state.wizardStep;
         if (currentStep === 1) {
@@ -104,7 +129,7 @@ class CreateReportPage extends React.Component {
                                     candidates={this.state.filteredCandidates}
                                     getCandidateData={this.getCandidateData}
                                 />
-                                <Col>
+                                <Col className={style.alignEnd}>
                                     <Button className={style.btnColor} onClick={this.nextStep}>Next</Button>
                                 </Col>
                             </Col>
@@ -118,9 +143,29 @@ class CreateReportPage extends React.Component {
                                     companies={this.state.filteredCompanies}
                                     getCompanyData={this.getCompanyData}
                                 />
-                                <Col>
+                                <Col l={6} m={6} s={6}>
                                     <Button className={style.btnColor} onClick={this.previousStep}>Back</Button>
+                                </Col>
+                                <Col className={style.alignEnd} l={6} m={6} s={6}>
                                     <Button className={style.btnColor} onClick={this.nextStep}>Next</Button>
+                                </Col>
+                            </Col>
+                            : null
+                        }
+
+                        {this.state.wizardStep === 3
+                            ? <Col l={9} className={style.reportDetailWrapper}>
+                                <ReportDetailsSelector
+                                    setInterviewDate={this.setInterviewDate}
+                                    setPhase={this.setPhase}
+                                    setStatus={this.setStatus}
+                                    setNote={this.setNote}
+                                />
+                                <Col l={6} m={6} s={6}>
+                                    <Button className={style.btnColor} onClick={this.previousStep}>Back</Button>
+                                </Col>
+                                <Col className={style.alignEnd} l={6} m={6} s={6}>
+                                    <Button className={style.btnColor} onClick={this.nextStep}>Submit</Button>
                                 </Col>
                             </Col>
                             : null
