@@ -1,0 +1,24 @@
+.boldText{
+    font-weight: bolder;
+}
+
+.borderRight{
+    margin-top: 15px;
+    border-right: 1px solid black;
+}
+.margin{
+    margin-bottom: 0px;
+}
+
+.borderTop{
+    border-top: 1px solid black;
+    margin-top: 0px;
+    padding-top: 15px !important;
+}
+
+@media only screen and (max-width: 992px) {
+    .borderTop{
+        border: none;
+        padding-top: 30px !important;
+    }
+}

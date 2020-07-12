@@ -4,7 +4,7 @@ import { Card, Table } from 'react-materialize';
 import { convertDate } from '../../../../shared/utilities';
 import { ModalReport } from '../../../../shared/ModalReport/ModalReport';
 
-const Report = ({ reports, modalIsOpen, openModal, report }) => {
+const Report = ({ reports, modalIsOpen, openModal, report, deleteReport }) => {
 
     return (
         <>
@@ -40,8 +40,8 @@ const Report = ({ reports, modalIsOpen, openModal, report }) => {
                                 <td>
                                     {report.status}
                                 </td>
-                                <td><i class="fa fa-eye" onClick={() => openModal(report)}></i></td>
-                                <td><i class="fa fa-close"></i></td>
+                                <td><i className="fa fa-eye" onClick={() => openModal(report)}></i></td>
+                                <td><i className="fa fa-close" onClick={() => deleteReport(report.id)}></i></td>
 
                             </tr>
                         )}

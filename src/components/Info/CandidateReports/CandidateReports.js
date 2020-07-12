@@ -22,7 +22,6 @@ const CandidateReports = ({ reports, candidateId, modalIsOpen, openModal, report
                             <th>Interview date</th>
                             <th>Status</th>
                             <th>Info</th>
-                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,7 +37,6 @@ const CandidateReports = ({ reports, candidateId, modalIsOpen, openModal, report
                                     {report.status}
                                 </td>
                                 <td><i class="fa fa-eye" onClick={() => openModal(report)}></i></td>
-                                <td><i class="fa fa-close"></i></td>
                             </tr>
                         )}
                     </tbody>
