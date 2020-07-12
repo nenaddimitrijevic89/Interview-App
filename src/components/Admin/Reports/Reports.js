@@ -30,6 +30,12 @@ class Reports extends React.Component {
         this.setState({ filteredReports: filtered })
     }
 
+    deleteReport = (id) => {
+        serviceReports.removeReports(id)
+        const filtered = this.state.reports.filter(report => report.id !== id)
+        this.setState({ filteredReports: filtered })
+    }
+
     render() {
         const access = Authentication();
         if (!access) {
@@ -45,6 +51,7 @@ class Reports extends React.Component {
                         modalIsOpen={this.state.modalIsOpen}
                         openModal={this.openModal}
                         report={this.state.report}
+                        deleteReport={this.deleteReport}
                     />
                 </Container>
             </>

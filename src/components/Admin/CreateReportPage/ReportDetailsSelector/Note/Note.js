@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Textarea } from 'react-materialize';
+import { Col } from 'react-materialize';
 
 const Note = ({ setNote }) => {
     let note;
@@ -15,21 +15,15 @@ const Note = ({ setNote }) => {
 
     return (
         <Col l={12}>
-            <Textarea
-                required
-                id='reportNotes'
-                label="Notes: "
-                onChange={onChangeNote}
-            />
 
-            {/* <div class="row">
-                <form class="col s12">
-                    <div class="input-field col s12">
-                        <textarea id="textarea1" class="materialize-textarea" onChange={onChangeNote}></textarea>
-                        <label htmlFor="textarea1">Textarea</label>
+            <div className="row">
+                <form className="col s12">
+                    <div className="input-field col s12">
+                        <textarea id="textarea1" className="materialize-textarea" onChange={onChangeNote}></textarea>
+                        <label htmlFor="textarea1">Notes:</label>
                     </div>
                 </form>
-            </div> */}
+            </div>
 
         </Col>
     )

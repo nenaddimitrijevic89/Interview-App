@@ -10,6 +10,9 @@ import { search } from '../../../shared/utilities';
 import { NavList } from './NavList/NavList';
 import { CompaniesSelector } from './CompaniesSelector/CompaniesSelector';
 import { ReportDetailsSelector } from './ReportDetailsSelector/ReportDetailsSelector';
+import { serviceReports } from '../../../services/fetchReports';
+import { storageService } from '../../../services/StorageService';
+import { Authentication } from '../../../services/AuthenticationService';
 
 class CreateReportPage extends React.Component {
     constructor(props) {
@@ -41,9 +44,20 @@ class CreateReportPage extends React.Component {
             .then(response => this.setState({ companies: response, filteredCompanies: response }))
     }
 
-    searchData = (text) => {
+    postNewReport = () => {
+        const token = storageService.get('accessToken')
+        serviceReports.postReports(this.state.newReportData, token)
+        this.props.history.push('/admin/reports')
+    }
+
+    searchCandidates = (text) => {
         let filtered = search(this.state.candidates, ['name'], text)
         this.setState({ filteredCandidates: filtered })
+    }
+
+    searchCompanies = (text) => {
+        let filtered = search(this.state.companies, ['name'], text)
+        this.setState({ filteredCompanies: filtered })
     }
 
     getCandidateData = (id, name) => {
@@ -113,18 +127,22 @@ class CreateReportPage extends React.Component {
 
 
     render() {
+        const access = Authentication();
+        if (!access) {
+            this.props.history.push("/admin")
+        }
         return (
             <>
                 <Header isHomePage={false} />
                 <Container>
                     <Row>
-                        <Col l={3}>
-                            <NavList />
+                        <Col l={3} s={12}>
+                            <NavList wizardStep={this.state.wizardStep} report={this.state.newReportData} />
                         </Col>
 
                         {this.state.wizardStep === 1
                             ? <Col l={9} className={style.selectorWrapper}>
-                                <Search search={this.searchData} />
+                                <Search search={this.searchCandidates} />
                                 <CandidatesSelector
                                     candidates={this.state.filteredCandidates}
                                     getCandidateData={this.getCandidateData}
@@ -138,7 +156,7 @@ class CreateReportPage extends React.Component {
 
                         {this.state.wizardStep === 2
                             ? <Col l={9} className={style.selectorWrapper}>
-                                <Search search={this.searchData} />
+                                <Search search={this.searchCompanies} />
                                 <CompaniesSelector
                                     companies={this.state.filteredCompanies}
                                     getCompanyData={this.getCompanyData}
@@ -165,7 +183,7 @@ class CreateReportPage extends React.Component {
                                     <Button className={style.btnColor} onClick={this.previousStep}>Back</Button>
                                 </Col>
                                 <Col className={style.alignEnd} l={6} m={6} s={6}>
-                                    <Button className={style.btnColor} onClick={this.nextStep}>Submit</Button>
+                                    <Button className={style.btnColor} onClick={this.postNewReport}>Submit</Button>
                                 </Col>
                             </Col>
                             : null

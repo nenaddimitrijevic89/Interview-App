@@ -35,10 +35,10 @@ const InfoSelector = ({ infos, label, setOption }) => {
                         onOpenStart: null,
                         outDuration: 250
                     }
-                }
-                }
-            // value={infos[0]}
+                }}
+                value="1"
             >
+                <option value="1" disabled>select</option>
                 {infos.map((info, i) => <option key={i} value={info}>{info}</option>)}
             </Select >
         </Col>

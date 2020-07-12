@@ -39,6 +39,7 @@ class LoginForm extends React.Component {
                         {this.state.wrongUser ? " wrong email or password" : ""}
                     </span>
                     <TextInput
+                        className={style.loginWidth}
                         email
                         id="TextInput-4"
                         label="Email"

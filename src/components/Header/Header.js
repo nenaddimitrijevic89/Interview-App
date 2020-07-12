@@ -17,7 +17,7 @@ const Header = ({ isHomePage }) => {
         <Navbar
             alignLinks="right"
             className={style.back}
-            brand={isHomePage ? <a className="brand-logo">Interview App</a> : <a className="brand-logo">Interview Reports</a>}
+            brand={isHomePage ? <a className="brand-logo">Interview App</a> : <a className={`brand-logo ${style.navName}`}>Interview Reports</a>}
             centerChildren
             id="mobile-nav"
             menuIcon={<><div className={style.menu}></div><div className={style.menu}></div><div className={style.menu}></div></>}
