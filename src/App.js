@@ -8,18 +8,25 @@ import { CandidateInfo } from './components/Info/CandidateInfo/CandidateInfo';
 import { LoginForm } from './components/Admin/LoginForm/LoginForm';
 import { Reports } from './components/Admin/Reports/Reports';
 import { CreateReportPage } from './components/Admin/CreateReportPage/CreateReportPage';
+import { Footer } from './components/Footer/Footer';
+
 
 function App() {
   return (
-    <div>
+    <div className='page-container'>
+      <div className='content'>
+        <Switch>
+          <Route exact path="/" component={Homepage} />
+          <Route exact path="/info/:id" component={CandidateInfo} />
+          <Route exact path="/admin" component={LoginForm} />
+          <Route exact path="/admin/reports" component={Reports} />
+          <Route exact path="/admin/createreport" component={CreateReportPage} />
+        </Switch>
+      </div>
       <Switch>
-        <Route exact path="/" component={Homepage} />
-        <Route exact path="/info/:id" component={CandidateInfo} />
-        <Route exact path="/admin" component={LoginForm} />
-        <Route exact path="/admin/reports" component={Reports} />
-        <Route exact path="/admin/createreport" component={CreateReportPage} />
+        <Route path='/' component={Footer} />
       </Switch>
-    </div>
+    </div >
   );
 }
 

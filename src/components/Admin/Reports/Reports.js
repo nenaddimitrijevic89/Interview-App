@@ -6,6 +6,7 @@ import { Report } from "./Report/Report";
 import { Authentication } from "../../../services/AuthenticationService";
 import { search } from "../../../shared/utilities";
 import { Search } from "../../Search/Search";
+import { Loading } from "../../Loading/Loading";
 
 class Reports extends React.Component {
     constructor() {
@@ -14,12 +15,14 @@ class Reports extends React.Component {
             reports: [],
             filteredReports: [],
             modalIsOpen: false,
-            report: {}
+            report: {},
+            isLoading: true
         }
     }
     componentDidMount() {
         serviceReports.getReports()
             .then(response => this.setState({ reports: response, filteredReports: response }))
+            .finally(() => this.setState({ isLoading: false }))
     }
     openModal = (report = {}) => {
         this.setState(prevState => ({ modalIsOpen: !prevState.modalIsOpen, report }))
@@ -40,6 +43,9 @@ class Reports extends React.Component {
         const access = Authentication();
         if (!access) {
             this.props.history.push("/admin")
+        }
+        if (this.state.isLoading) {
+            return <Loading />
         }
         return (
             <>

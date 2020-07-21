@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Icon, NavItem } from 'react-materialize';
+import { Navbar, NavItem } from 'react-materialize';
 import style from './Header.module.css';
 import { Link } from 'react-router-dom';
 import { storageService } from '../../services/StorageService';
