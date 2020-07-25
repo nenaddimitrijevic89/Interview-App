@@ -7,6 +7,7 @@ import { Authentication } from "../../../services/AuthenticationService";
 import { search } from "../../../shared/utilities";
 import { Search } from "../../Search/Search";
 import { Loading } from "../../Loading/Loading";
+import style from './Reports.module.css';
 
 class Reports extends React.Component {
     constructor() {
@@ -52,13 +53,17 @@ class Reports extends React.Component {
                 <Header isHomePage={false} />
                 <Container>
                     <Search search={this.searchReports} />
-                    <Report
-                        reports={this.state.filteredReports}
-                        modalIsOpen={this.state.modalIsOpen}
-                        openModal={this.openModal}
-                        report={this.state.report}
-                        deleteReport={this.deleteReport}
-                    />
+                    {this.state.filteredReports.length
+                        ? <Report
+                            reports={this.state.filteredReports}
+                            modalIsOpen={this.state.modalIsOpen}
+                            openModal={this.openModal}
+                            report={this.state.report}
+                            deleteReport={this.deleteReport}
+                        />
+                        : <h4 className={style.textCenter}>Sorry, we do not have that candidate neither company in our system &#x1F610;</h4>
+                    }
+
                 </Container>
             </>
         )

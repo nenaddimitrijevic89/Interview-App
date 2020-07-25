@@ -143,13 +143,17 @@ class CreateReportPage extends React.Component {
                         {this.state.wizardStep === 1
                             ? <Col l={9} className={style.selectorWrapper}>
                                 <Search search={this.searchCandidates} />
-                                <CandidatesSelector
-                                    candidates={this.state.filteredCandidates}
-                                    getCandidateData={this.getCandidateData}
-                                />
-                                <Col className={style.alignEnd}>
-                                    <Button className={style.btnColor} onClick={this.nextStep}>Next</Button>
-                                </Col>
+                                {this.state.filteredCandidates.length
+                                    ? <><CandidatesSelector
+                                        candidates={this.state.filteredCandidates}
+                                        getCandidateData={this.getCandidateData}
+                                    />
+                                        <Col className={style.alignEnd}>
+                                            <Button className={style.btnColor} onClick={this.nextStep}>Next</Button>
+                                        </Col></>
+                                    : <h4 className={style.textCenter}>Sorry, that candidate is not in our system &#x1F610;</h4>
+                                }
+
                             </Col>
                             : null
                         }
@@ -157,16 +161,19 @@ class CreateReportPage extends React.Component {
                         {this.state.wizardStep === 2
                             ? <Col l={9} className={style.selectorWrapper}>
                                 <Search search={this.searchCompanies} />
-                                <CompaniesSelector
-                                    companies={this.state.filteredCompanies}
-                                    getCompanyData={this.getCompanyData}
-                                />
-                                <Col l={6} m={6} s={6}>
-                                    <Button className={style.btnColor} onClick={this.previousStep}>Back</Button>
-                                </Col>
-                                <Col className={style.alignEnd} l={6} m={6} s={6}>
-                                    <Button className={style.btnColor} onClick={this.nextStep}>Next</Button>
-                                </Col>
+                                {this.state.filteredCompanies.length
+                                    ? <><CompaniesSelector
+                                        companies={this.state.filteredCompanies}
+                                        getCompanyData={this.getCompanyData}
+                                    />
+                                        <Col l={6} m={6} s={6}>
+                                            <Button className={style.btnColor} onClick={this.previousStep}>Back</Button>
+                                        </Col>
+                                        <Col className={style.alignEnd} l={6} m={6} s={6}>
+                                            <Button className={style.btnColor} onClick={this.nextStep}>Next</Button>
+                                        </Col></>
+                                    : <h4 className={style.textCenter}>Sorry, that company is not in our system &#x1F610;</h4>
+                                }
                             </Col>
                             : null
                         }

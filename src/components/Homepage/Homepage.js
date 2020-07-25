@@ -6,6 +6,7 @@ import { Search } from '../Search/Search';
 import { Header } from '../Header/Header';
 import { search } from '../../shared/utilities';
 import { Loading } from '../Loading/Loading';
+import style from './Homepage.module.css';
 
 class Homepage extends React.Component {
     constructor(props) {
@@ -38,7 +39,10 @@ class Homepage extends React.Component {
                 <Header isHomePage={true} />
                 <Container>
                     <Search search={this.searchCandidates} />
-                    <Candidates candidates={this.state.filteredCandidatesList} />
+                    {this.state.filteredCandidatesList.length
+                        ? <Candidates candidates={this.state.filteredCandidatesList} />
+                        : <h4 className={style.textCenter}>Sorry, that candidate is not in our system &#x1F610;</h4>
+                    }
                 </Container>
             </>
         )
